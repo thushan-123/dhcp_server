@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         try{
-            DatagramSocket serverSocket = new DatagramSocket(67);
+            DatagramSocket serverSocket = new DatagramSocket(6767);
             System.out.println("DHCP Server run on 0.0.0.0:67");
 
             byte[] receivedData = new byte[1024];
