@@ -17,7 +17,10 @@ public class Message {
     byte[] file;          // file     -> 128bytes
     byte[] optional;
 
-
+//  data[0] , data[1], data[2], data[3],
+//  byte data array
+//  data[4-8], data[8-10], data[10-12],
+//  data[12-16], data[16-20], data[20-24], data[24-28], data[28-44], data[44-108], data[108-236]
     public Message(
             byte op,
             byte htype,
