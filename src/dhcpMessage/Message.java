@@ -15,9 +15,40 @@ public class Message {
     byte chaddr;        // chaddr   -> 16byte
     byte sname;         // sname    -> 64byte
     byte file;          // file     -> 128bytes
-    byte optionsl
+    byte optional;
 
 
-    public Message() {
+    public Message(
+            byte op,
+            byte htype,
+            byte hlen,
+            byte hops,
+            byte xid,
+            byte seces,
+            byte flags,
+            byte ciaddr,
+            byte yiaddr,
+            byte siaddr,
+            byte giaddr,
+            byte chaddr,
+            byte sname,
+            byte file,
+            byte optional
+    ) {
+        this.op = op;
+        this.htype = htype;
+        this.hlen = hlen;
+        this.hops = hops;
+        this.xid = xid;
+        this.seces = seces;
+        this.flags = flags;
+        this.ciaddr = ciaddr;
+        this.yiaddr = yiaddr;
+        this.siaddr = siaddr;
+        this.giaddr = giaddr;
+        this.chaddr = chaddr;
+        this.sname = sname;
+        this.file = file;
+        this.optional = optional;
     }
 }
