@@ -5,17 +5,17 @@ public class Message {
     byte htype;         // htype    -> 1byte
     byte hlen;          // hlen     -> 1byte
     byte hops;          // hops     -> 1byte
-    byte xid;           // xid      -> 4byte
-    byte seces;         // seces    -> 2byte
-    byte flags;         // flags    -> 2byte
-    byte ciaddr;        // ciaddr   -> 4byte
-    byte yiaddr;        // yiaddr   -> 4byte
-    byte siaddr;        // siaddr   -> 4byte
-    byte giaddr;        // giaddr   -> 4byte
-    byte chaddr;        // chaddr   -> 16byte
-    byte sname;         // sname    -> 64byte
-    byte file;          // file     -> 128bytes
-    byte optional;
+    byte[] xid;           // xid      -> 4byte
+    byte[] seces;         // seces    -> 2byte
+    byte[] flags;         // flags    -> 2byte
+    byte[] ciaddr;        // ciaddr   -> 4byte
+    byte[] yiaddr;        // yiaddr   -> 4byte
+    byte[] siaddr;        // siaddr   -> 4byte
+    byte[] giaddr;        // giaddr   -> 4byte
+    byte[] chaddr;        // chaddr   -> 16byte
+    byte[] sname;         // sname    -> 64byte
+    byte[] file;          // file     -> 128bytes
+    byte[] optional;
 
 
     public Message(
@@ -23,17 +23,17 @@ public class Message {
             byte htype,
             byte hlen,
             byte hops,
-            byte xid,
-            byte seces,
-            byte flags,
-            byte ciaddr,
-            byte yiaddr,
-            byte siaddr,
-            byte giaddr,
-            byte chaddr,
-            byte sname,
-            byte file,
-            byte optional
+            byte[] xid,
+            byte[] seces,
+            byte[] flags,
+            byte[] ciaddr,
+            byte[] yiaddr,
+            byte[] siaddr,
+            byte[] giaddr,
+            byte[] chaddr,
+            byte[] sname,
+            byte[] file,
+            byte[] optional
     ) {
         this.op = op;
         this.htype = htype;
