@@ -5,9 +5,9 @@ import java.io.IOException;
 public class OfferMessage {
 //    public final Message message;
 //
-//    public OfferMessage(Message message) {
-//        this.message = message;
-//    }
+    public OfferMessage(Message message) {
+
+    }
 
     public byte [] build ( byte[] xid, byte[] clientMac, byte[] yiaddrOffered ) throws IOException {
         byte op = 2 ;
