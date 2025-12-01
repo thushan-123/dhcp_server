@@ -77,5 +77,6 @@ public class Message {
         outputStream.write(file);
         outputStream.write(optional);
 
+        return outputStream.toByteArray();
     }
 }
