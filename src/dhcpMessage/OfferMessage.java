@@ -5,11 +5,18 @@ import java.io.IOException;
 public class OfferMessage {
 //    public final Message message;
 //
-    public OfferMessage(Message message) {
+    public final byte[] xid;
+    public final byte[] clientMac;
+    public final byte[] yiaddrOffered;
 
+    public OfferMessage(byte[] xid, byte[] clientMac, byte[] yiaddrOffered) {
+
+        this.xid = xid;
+        this.clientMac = clientMac;
+        this.yiaddrOffered = yiaddrOffered;
     }
 
-    public byte [] build ( byte[] xid, byte[] clientMac, byte[] yiaddrOffered ) throws IOException {
+    public byte [] build () throws IOException {
         byte op = 2 ;
         byte htype = 1;
         byte hlen = 6;
