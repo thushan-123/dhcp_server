@@ -1,5 +1,8 @@
 package dhcpMessage;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 public class Message {
     byte op ;           // opcode   -> 1byte
     byte htype;         // htype    -> 1byte
@@ -53,5 +56,26 @@ public class Message {
         this.sname = sname;
         this.file = file;
         this.optional = optional;
+    }
+
+    public byte[] builtMessage() throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        outputStream.write(op);
+        outputStream.write(htype);
+        outputStream.write(hlen);
+        outputStream.write(hops);
+        outputStream.write(xid);
+        outputStream.write(seces);
+        outputStream.write(flags);
+        outputStream.write(ciaddr);
+        outputStream.write(yiaddr);
+        outputStream.write(siaddr);
+        outputStream.write(giaddr);
+        outputStream.write(chaddr);
+        outputStream.write(sname);
+        outputStream.write(file);
+        outputStream.write(optional);
+
     }
 }
