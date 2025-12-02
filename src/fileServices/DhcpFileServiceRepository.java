@@ -1,7 +1,9 @@
 package fileServices;
 
+import fileServices.dto.FileData;
+
 public interface DhcpFileServiceRepository {
     public boolean createFile(String filename);
 
-    public
+    public FileData getDhcpValues(String filename);
 }
