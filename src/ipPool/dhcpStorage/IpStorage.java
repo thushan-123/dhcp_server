@@ -1,4 +1,4 @@
-package ipPool.fileStorage;
+package ipPool.dhcpStorage;
 
 import java.net.Inet4Address;
 import java.net.NetworkInterface;

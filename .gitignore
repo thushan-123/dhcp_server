@@ -25,7 +25,7 @@ bin/
 ### VS Code ###
 .vscode/
 
-src/ipPool/fileStorage/example.txt
+src/ipPool/dhcpStorage/example.txt
 src/example.txt
 ### Mac OS ###
 .DS_Store
