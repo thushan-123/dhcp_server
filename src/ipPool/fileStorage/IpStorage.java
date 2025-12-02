@@ -1,4 +1,27 @@
 package ipPool.fileStorage;
 
+import java.net.Inet4Address;
+import java.net.NetworkInterface;
+
 public class IpStorage {
+    NetworkInterface networkInterface;
+    Inet4Address inet4AddressAssign;
+
+    public IpStorage() {}
+
+    public Inet4Address getInet4AddressAssign() {
+        return inet4AddressAssign;
+    }
+
+    public void setInet4AddressAssign(Inet4Address inet4AddressAssign) {
+        this.inet4AddressAssign = inet4AddressAssign;
+    }
+
+    public NetworkInterface getNetworkInterface() {
+        return networkInterface;
+    }
+
+    public void setNetworkInterface(NetworkInterface networkInterface) {
+        this.networkInterface = networkInterface;
+    }
 }
