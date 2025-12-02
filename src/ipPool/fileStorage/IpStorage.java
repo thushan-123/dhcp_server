@@ -2,10 +2,12 @@ package ipPool.fileStorage;
 
 import java.net.Inet4Address;
 import java.net.NetworkInterface;
+import java.time.LocalDateTime;
 
 public class IpStorage {
     NetworkInterface networkInterface;
     Inet4Address inet4AddressAssign;
+    LocalDateTime leaseTime;
 
     public IpStorage() {}
 
@@ -23,5 +25,13 @@ public class IpStorage {
 
     public void setNetworkInterface(NetworkInterface networkInterface) {
         this.networkInterface = networkInterface;
+    }
+
+    public LocalDateTime getLeaseTime() {
+        return leaseTime;
+    }
+
+    public void setLeaseTime(LocalDateTime leaseTime) {
+        this.leaseTime = leaseTime;
     }
 }
