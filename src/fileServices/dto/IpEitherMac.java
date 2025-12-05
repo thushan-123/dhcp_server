@@ -8,11 +8,18 @@ public class IpEitherMac {
 
     public IpEitherMac() {}
 
-    public IpEitherMac(Inet4Address ip) {}
+    public IpEitherMac(Inet4Address ip) {
+        this.ip = ip;
+    }
 
-    public IpEitherMac(String mac) {}
+    public IpEitherMac(String mac) {
+        this.mac = mac;
+    }
 
-    public IpEitherMac(Inet4Address ip, String mac) {}
+    public IpEitherMac(Inet4Address ip, String mac) {
+        this.ip = ip;
+        this.mac = mac;
+    }
 
     public Inet4Address getIp() {
         return ip;
