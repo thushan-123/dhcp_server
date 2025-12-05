@@ -3,13 +3,13 @@ package fileServices.dto;
 import java.net.Inet4Address;
 
 public class FileData {
-    String poolId;
-    String poolName;
-    Inet4Address defaultGateway;
-    Inet4Address dns;
-    Inet4Address subnetMask;
-    Inet4Address networkIp;
-    int numberOfIp;
+    private String poolId;
+    private String poolName;
+    private Inet4Address defaultGateway;
+    private Inet4Address dns;
+    private Inet4Address subnetMask;
+    private Inet4Address networkIp;
+    private int numberOfIp;
 
     public String getPoolId() {
         return poolId;

@@ -3,8 +3,8 @@ package fileServices.dto;
 import java.net.Inet4Address;
 
 public class IpEitherMac {
-    Inet4Address ip;
-    String mac;
+    private Inet4Address ip;
+    private String mac;
 
     public IpEitherMac() {}
 
