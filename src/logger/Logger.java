@@ -1,12 +1,32 @@
 package logger;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
+import javax.sound.midi.SoundbankResource;
+import java.time.LocalDateTime;
 
 public class Logger {
 
-    private Date date;
-    private Time time;
+    public Logger logger;
+    private LocalDateTime dateTime;
     private String message;
+    private LogStatus logStatus;
+
+    private Logger() {
+    }
+    public synchronized void log(LogStatus logStatus, String message) {
+        this.logStatus = logStatus;
+        this.message = message;
+
+        if (this.logger == null) {
+            this.logger = new Logger();
+            output();
+        }else {
+            this.logger.output();
+        }
+    }
+
+    public void output(){
+        System.out.println("[" + LocalDateTime.now() + "] " + "[" + this.logStatus.name()+ "] " + this.message);
+    }
+
+
 }
