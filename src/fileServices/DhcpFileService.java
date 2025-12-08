@@ -28,12 +28,14 @@ public class DhcpFileService implements DhcpFileServiceRepository {
     @Override
     public FileData getDhcpValues(String filename){
         try{
-            // read the file
+            // check the file is existed
             String path = filename;
             File file = new File(path);
             if(!file.exists()){
                 throw new FileNotFoundException("File does not exist" + filename);
             }
+
+            // call to file reader service
 
         }catch (Exception e){
             System.out.println("Error : " + e.getMessage());
