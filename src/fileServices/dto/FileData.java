@@ -1,5 +1,7 @@
 package fileServices.dto;
 
+import enums.IpStatus;
+
 import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +14,8 @@ public class FileData {
     private Inet4Address subnetMask;
     private Inet4Address networkIp;
     private int numberOfIp;
-    private List<HashMap<String, String>> ips;
+    private List<HashMap<HashMap<String, String>, IpStatus>> ips;
+    // FF:FC:12:21:8A:90  192.168.8.10 ACTIVE   IpStatus -> ACTIVE or INACTIVE
 
     public String getPoolId() {
         return poolId;
@@ -70,11 +73,11 @@ public class FileData {
         this.numberOfIp = numberOfIp;
     }
 
-    public List<HashMap<String, String>> getIps() {
+    public List<HashMap<HashMap<String, String>, IpStatus>> getIps() {
         return ips;
     }
 
-    public void setIps(List<HashMap<String, String>> ips) {
+    public void setIps(List<HashMap<HashMap<String, String>, IpStatus>> ips) {
         this.ips = ips;
     }
 }
