@@ -1,6 +1,8 @@
 package fileServices.dto;
 
 import java.net.Inet4Address;
+import java.util.HashMap;
+import java.util.List;
 
 public class FileData {
     private String poolId;
@@ -10,6 +12,7 @@ public class FileData {
     private Inet4Address subnetMask;
     private Inet4Address networkIp;
     private int numberOfIp;
+    private List<HashMap<String, String>> ips;
 
     public String getPoolId() {
         return poolId;
@@ -65,6 +68,14 @@ public class FileData {
 
     public void setNumberOfIp(int numberOfIp) {
         this.numberOfIp = numberOfIp;
+    }
+
+    public List<HashMap<String, String>> getIps() {
+        return ips;
+    }
+
+    public void setIps(List<HashMap<String, String>> ips) {
+        this.ips = ips;
     }
 }
 
