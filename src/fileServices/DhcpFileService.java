@@ -4,6 +4,7 @@ import fileServices.dto.FileData;
 import fileServices.dto.IpEitherMac;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -25,9 +26,20 @@ public class DhcpFileService implements DhcpFileServiceRepository {
     }
 
     @Override
-    public FileData getDhcpValues(String filename) {
+    public FileData getDhcpValues(String filename){
+        try{
+            // read the file
+            String path = filename;
+            File file = new File(path);
+            if(!file.exists()){
+                throw new FileNotFoundException("File does not exist" + filename);
+            }
 
-        return null;
+        }catch (Exception e){
+            System.out.println("Error : " + e.getMessage());
+            return null;
+        }
+
     }
 
     @Override
