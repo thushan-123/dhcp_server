@@ -3,7 +3,10 @@ package fileServices;
 import enums.IpStatus;
 import fileServices.dto.FileData;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 public class FileReaderService implements FileReaderServiceRepository{
     @Override
     public FileData readContent(
+            String filePath,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -23,7 +27,8 @@ public class FileReaderService implements FileReaderServiceRepository{
     }
 
     @Override
-    public FileData writeContent(
+    public boolean writeContent(
+            String filePath,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -44,13 +49,32 @@ public class FileReaderService implements FileReaderServiceRepository{
 
             String defaultGatewayIp = "default-gateway" + defaultGateway.toString();
             String dnsIp = "dns" + dns.toString();
-            return null;
+
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath)));
+            bw.write(firstLine);
+            bw.newLine();
+            bw.write(defaultGatewayIp);
+            bw.newLine();
+            bw.write(dnsIp);
+            bw.newLine();
+            bw.newLine();
+
+            ips.forEach(ip -> {
+                String line = ip.toString() + "\t";
+                try {
+                    bw.write(line);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+            return true;
 
         }catch (Exception e){
             System.out.println("Error in writing content" + e.getMessage());
-            return null;
+            return false;
         }
     }
+
 }
 /*
 # ip-pool  <pool-id> <pool-name> <network-ip> <subnet-mask> <start-pool-line-number> <number-of-ips>

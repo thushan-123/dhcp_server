@@ -11,6 +11,7 @@ import java.util.List;
 public interface FileReaderServiceRepository {
 
     public FileData readContent(
+            String filePath,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -21,7 +22,8 @@ public interface FileReaderServiceRepository {
             List<HashMap<HashMap<String, String>, IpStatus>> ips
     );
 
-    public FileData writeContent(
+    public boolean writeContent(
+            String filepath,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -31,5 +33,6 @@ public interface FileReaderServiceRepository {
             int numberOfIp,
             List<HashMap<HashMap<String, String>, IpStatus>> ips
     );
+
 }
 
