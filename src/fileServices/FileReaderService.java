@@ -3,6 +3,7 @@ package fileServices;
 import enums.IpStatus;
 import fileServices.dto.FileData;
 
+import java.io.File;
 import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,43 @@ public class FileReaderService implements FileReaderServiceRepository{
             int numberOfIp,
             List<HashMap<HashMap<String, String>, IpStatus>> ips
     ) {
-        return null;
+        try {
+            String firstLine = "ip-pool\t" +
+                    poolId + "\t" +
+                    poolName + "\t" +
+                    networkIp.toString() + "\t" +
+                    subnetMask.toString() + "\t" +
+                    "5\t" +
+                    numberOfIp + "\t";
+
+            String defaultGatewayIp = "default-gateway" + defaultGateway.toString();
+            String dnsIp = "dns" + dns.toString();
+            return null;
+
+        }catch (Exception e){
+            System.out.println("Error in writing content" + e.getMessage());
+            return null;
+        }
     }
 }
+/*
+# ip-pool  <pool-id> <pool-name> <network-ip> <subnet-mask> <start-pool-line-number> <number-of-ips>
+# default-gateway 192.168.1.1
+# dns 8.8.8.8
+
+# ip sub_pool <sub-pool-id> <size>    // line number 5  size 10  (next-sub-pool-line 17 (start-line + (sub-pool-id * size) +2) 5 + (10 * 1) + 2 = 17
+
+ff:56:55:55:34:aa:12  192.168.1.100  5  ACTIVE  // <mac-address> <ip> <lease-time> <assign or available>
+ff:56:55:55:34:aa:12  192.168.1.101  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.102  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.103  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.104  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.105  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.106  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.107  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.108  5  ACTIVE
+ff:56:55:55:34:aa:12  192.168.1.109  5  INACTIVE
+
+# ip sub_pool <sub-pool-id> <size>
+
+ */
