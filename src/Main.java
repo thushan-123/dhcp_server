@@ -1,3 +1,5 @@
+import dhcpMessage.OfferMessage;
+import enums.IpStatus;
 import logger.LogStatus;
 import logger.Logger;
 
@@ -12,7 +14,8 @@ public class Main {
 
         try{
             serverSocket = new DatagramSocket(6767);
-            System.out.println("DHCP Server run on 0.0.0.0:67");
+            Logger.getInstance().log(LogStatus.INFO, "DHCP Server run on 0.0.0.0:67");
+            //System.out.println();
 
             while (true){
                 byte[] receivedData = new byte[1024]; // create buffer
@@ -33,7 +36,8 @@ public class Main {
                 InetAddress clientAddress = datagramPacket.getAddress();
                 int port = datagramPacket.getPort();
 
-                String response = "hii i am DHCP";
+                // send DHCPOFFER message to client
+                String response = "";
                 byte[] responseData = response.getBytes();
                 DatagramPacket resPacket = new DatagramPacket(
                         responseData,
@@ -57,5 +61,4 @@ public class Main {
         }
     }
 
-    // developed by thush
 }
