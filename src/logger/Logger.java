@@ -1,32 +1,24 @@
 package logger;
 
-import javax.sound.midi.SoundbankResource;
 import java.time.LocalDateTime;
 
 public class Logger {
 
-    public Logger logger;
-    private LocalDateTime dateTime;
-    private String message;
-    private LogStatus logStatus;
+    private static Logger logger;
 
-    private Logger() {
-    }
-    public synchronized void log(LogStatus logStatus, String message) {
-        this.logStatus = logStatus;
-        this.message = message;
+    private Logger() {}
 
-        if (this.logger == null) {
-            this.logger = new Logger();
-            output();
-        }else {
-            this.logger.output();
+    public static synchronized Logger getInstance() {
+        if (logger == null) {
+            logger = new Logger();
         }
+        return logger;
     }
 
-    public void output(){
-        System.out.println("[" + LocalDateTime.now() + "] " + "[" + this.logStatus.name()+ "] " + this.message);
+    public synchronized void log(LogStatus logStatus, String message) {
+        System.out.println("[" + LocalDateTime.now() + "] "
+                + "[" + logStatus.name() + "] "
+                + message);
     }
-
-
 }
+

@@ -1,3 +1,6 @@
+import logger.LogStatus;
+import logger.Logger;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -46,7 +49,7 @@ public class Main {
 
 
         }catch (Exception e){
-            e.printStackTrace();
+            Logger.getInstance().log(LogStatus.ERROR, e.getMessage());
         }finally {
             if(serverSocket != null && !serverSocket.isClosed()){
                 serverSocket.close();
