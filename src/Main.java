@@ -28,21 +28,13 @@ public class Main {
                 byte[] data = datagramPacket.getData();
 
                 Logger.getInstance().log(LogStatus.INFO, "DHCP DISCOVER message receive");
+                GrabDhcpDiscover grabDhcpDiscover = new GrabDhcpDiscover(data);
 
-                InetAddress clientAddress = datagramPacket.getAddress();
-                int port = datagramPacket.getPort();
 
-                // send DHCPOFFER message to client
-                String response = "";
-                byte[] responseData = response.getBytes();
-                DatagramPacket resPacket = new DatagramPacket(
-                        responseData,
-                        responseData.length,
-                        clientAddress,
-                        port
-                ); // create the response pkt
 
-                serverSocket.send(resPacket);
+//                DatagramPacket resPacket = getDatagramPacket(datagramPacket);
+//
+//                serverSocket.send(resPacket);
 
 
             }
@@ -55,6 +47,22 @@ public class Main {
                 serverSocket.close();
             }
         }
+    }
+
+    private static DatagramPacket getDatagramPacket(DatagramPacket datagramPacket) {
+        InetAddress clientAddress = datagramPacket.getAddress();
+        int port = datagramPacket.getPort();
+
+        // send DHCPOFFER message to client
+        String response = "";
+        byte[] responseData = response.getBytes();
+        DatagramPacket resPacket = new DatagramPacket(
+                responseData,
+                responseData.length,
+                clientAddress,
+                port
+        ); // create the response pkt
+        return resPacket;
     }
 
 }
