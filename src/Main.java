@@ -25,13 +25,9 @@ public class Main {
                 );
 
                 serverSocket.receive(datagramPacket);
-                System.out.println(
-                        new String(
-                                datagramPacket.getData(),
-                                0,
-                                datagramPacket.getLength()
-                        )
-                );
+                byte[] data = datagramPacket.getData();
+
+                Logger.getInstance().log(LogStatus.INFO, "DHCP DISCOVER message receive");
 
                 InetAddress clientAddress = datagramPacket.getAddress();
                 int port = datagramPacket.getPort();
