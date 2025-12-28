@@ -100,7 +100,7 @@ public class FileService implements FileServiceRepository {
 
             header.setDefaultGateway((Inet4Address) Inet4Address.getByName(defaultGatewayIp));
             header.setDns((Inet4Address) Inet4Address.getByName(dnsIp));
-            return null;
+            return header;
         }catch (Exception e){
             System.out.println("Error in getting headers" + e.getMessage());
             throw new RuntimeException(e);
