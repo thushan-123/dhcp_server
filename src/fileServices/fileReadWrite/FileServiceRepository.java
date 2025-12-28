@@ -7,7 +7,7 @@ import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
 
-public interface FileReaderServiceRepository {
+public interface FileServiceRepository {
 
     public FileData readContent(
             String filePath,

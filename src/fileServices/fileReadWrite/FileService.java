@@ -11,7 +11,7 @@ import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
 
-public class FileReaderService implements FileReaderServiceRepository {
+public class FileService implements FileServiceRepository {
     @Override
     public FileData readContent(
             String filePath,
