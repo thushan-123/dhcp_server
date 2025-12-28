@@ -2,6 +2,7 @@ package fileServices.fileReadWrite;
 
 import enums.IpStatus;
 import fileServices.dto.FileData;
+import fileServices.dto.Headers;
 
 import java.net.Inet4Address;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ public interface FileServiceRepository {
             List<HashMap<HashMap<String, String>, IpStatus>> ips
     );
 
-    //public getHeaders
+    public Headers getHeaders(String poolId);
 
 }
 

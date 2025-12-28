@@ -2,11 +2,9 @@ package fileServices.fileReadWrite;
 
 import enums.IpStatus;
 import fileServices.dto.FileData;
+import fileServices.dto.Headers;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
@@ -73,6 +71,25 @@ public class FileService implements FileServiceRepository {
             System.out.println("Error in writing content" + e.getMessage());
             return false;
         }
+    }
+
+    @Override
+    public Headers getHeaders(String poolId) {
+
+        try {
+            // open the file read mode
+            BufferedReader br = new BufferedReader(new FileReader(new File(poolId)));
+            String line = br.readLine();
+            String defaultGatewayIp = br.readLine();
+            String [] arr = line.split(" ");
+
+            if (arr.length != 6) {}
+            return null;
+        }catch (Exception e){
+            System.out.println("Error in getting headers" + e.getMessage());
+            throw new RuntimeException(e);
+        }
+        //return null;
     }
 
 }
