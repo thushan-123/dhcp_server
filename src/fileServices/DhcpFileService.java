@@ -1,7 +1,7 @@
 package fileServices;
 
 import fileServices.dto.FileData;
-import fileServices.dto.IpEitherMac;
+import fileServices.dto.IpAndMac;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,6 +36,7 @@ public class DhcpFileService implements DhcpFileServiceRepository {
             }
 
             // call to file reader service
+            return null;
 
         }catch (Exception e){
             System.out.println("Error : " + e.getMessage());
@@ -45,7 +46,7 @@ public class DhcpFileService implements DhcpFileServiceRepository {
     }
 
     @Override
-    public List<IpEitherMac> showDhcpPool(String filename) {
+    public List<IpAndMac> showDhcpPool(String filename) {
         return List.of();
     }
 }

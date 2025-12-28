@@ -1,4 +1,4 @@
-package fileServices;
+package fileServices.fileReadWrite;
 
 import enums.IpStatus;
 import fileServices.dto.FileData;
@@ -11,7 +11,7 @@ import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
 
-public class FileReaderService implements FileReaderServiceRepository{
+public class FileReaderService implements FileReaderServiceRepository {
     @Override
     public FileData readContent(
             String filePath,

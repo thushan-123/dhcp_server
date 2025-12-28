@@ -4,22 +4,22 @@ import enums.IpStatus;
 
 import java.net.Inet4Address;
 
-public class IpEitherMac {
+public class IpAndMac {
     private Inet4Address ip;
     private String mac;
     private IpStatus status;
 
-    public IpEitherMac() {}
+    public IpAndMac() {}
 
-    public IpEitherMac(Inet4Address ip) {
+    public IpAndMac(Inet4Address ip) {
         this.ip = ip;
     }
 
-    public IpEitherMac(String mac) {
+    public IpAndMac(String mac) {
         this.mac = mac;
     }
 
-    public IpEitherMac(Inet4Address ip, String mac) {
+    public IpAndMac(Inet4Address ip, String mac) {
         this.ip = ip;
         this.mac = mac;
     }

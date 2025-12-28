@@ -1,9 +1,8 @@
-package fileServices;
+package fileServices.fileReadWrite;
 
 import enums.IpStatus;
 import fileServices.dto.FileData;
 
-import java.io.File;
 import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
