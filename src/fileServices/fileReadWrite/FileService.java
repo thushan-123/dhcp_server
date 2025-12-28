@@ -6,6 +6,7 @@ import fileServices.dto.Headers;
 
 import java.io.*;
 import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.List;
 
@@ -81,9 +82,17 @@ public class FileService implements FileServiceRepository {
             BufferedReader br = new BufferedReader(new FileReader(new File(poolId)));
             String line = br.readLine();
             String defaultGatewayIp = br.readLine();
+            String dnsIp = br.readLine();
             String [] arr = line.split(" ");
 
-            if (arr.length != 6) {}
+            if (arr.length != 6 || defaultGatewayIp == null || dnsIp == null) {
+                throw new RuntimeException("empty file content");
+            }
+
+            Headers header = new Headers();
+            header.setPoolId(poolId);
+            header.setDefaultGateway((Inet4Address) Inet4Address.getByName(defaultGatewayIp));
+            header.setDns((Inet4Address) Inet4Address.getByName(dnsIp));
             return null;
         }catch (Exception e){
             System.out.println("Error in getting headers" + e.getMessage());
