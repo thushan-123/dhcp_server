@@ -14,7 +14,7 @@ import java.util.List;
 public class FileService implements FileServiceRepository {
     @Override
     public FileData readContent(
-            String filePath,
+            String fileId,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -28,7 +28,7 @@ public class FileService implements FileServiceRepository {
 
     @Override
     public boolean writeContent(
-            String filePath,
+            String fileId,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -50,7 +50,7 @@ public class FileService implements FileServiceRepository {
             String defaultGatewayIp = "default-gateway" + defaultGateway.toString();
             String dnsIp = "dns" + dns.toString();
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath)));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileId)));
             bw.write(firstLine);
             bw.newLine();
             bw.write(defaultGatewayIp);

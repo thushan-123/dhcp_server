@@ -10,7 +10,7 @@ import java.util.List;
 public interface FileServiceRepository {
 
     public FileData readContent(
-            String filePath,
+            String fileId,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -22,7 +22,7 @@ public interface FileServiceRepository {
     );
 
     public boolean writeContent(
-            String filepath,
+            String fileId,
             String poolId,
             String poolName,
             Inet4Address defaultGateway,
@@ -32,6 +32,8 @@ public interface FileServiceRepository {
             int numberOfIp,
             List<HashMap<HashMap<String, String>, IpStatus>> ips
     );
+
+    //public getHeaders
 
 }
 
