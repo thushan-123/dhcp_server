@@ -90,7 +90,14 @@ public class FileService implements FileServiceRepository {
             }
 
             Headers header = new Headers();
+
+            // ip-pool  <pool-id> <pool-name> <network-ip> <subnet-mask> <start-pool-line-number> <number-of-ips>
             header.setPoolId(poolId);
+            header.setPoolName(arr[2]);
+            header.setNetworkIp((Inet4Address) Inet4Address.getByName(arr[3]));
+            header.setSubnetMask((Inet4Address) Inet4Address.getByName(arr[4]));
+            header.setNumberOfIp(Integer.parseInt(arr[5]));
+
             header.setDefaultGateway((Inet4Address) Inet4Address.getByName(defaultGatewayIp));
             header.setDns((Inet4Address) Inet4Address.getByName(dnsIp));
             return null;
