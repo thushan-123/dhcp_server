@@ -36,5 +36,7 @@ public interface FileServiceRepository {
 
     public Headers getHeaders(String poolId);
 
+    public boolean addMacAndIp(String poolId, String mac, Inet4Address ip);
+
 }
 

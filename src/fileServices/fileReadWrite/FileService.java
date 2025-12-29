@@ -85,7 +85,7 @@ public class FileService implements FileServiceRepository {
             String dnsIp = br.readLine();
             String [] arr = line.split(" ");
 
-            if (arr.length != 6 || defaultGatewayIp == null || dnsIp == null) {
+            if (arr.length != 7 || defaultGatewayIp == null || dnsIp == null) {
                 throw new RuntimeException("empty file content");
             }
 
@@ -96,7 +96,7 @@ public class FileService implements FileServiceRepository {
             header.setPoolName(arr[2]);
             header.setNetworkIp((Inet4Address) Inet4Address.getByName(arr[3]));
             header.setSubnetMask((Inet4Address) Inet4Address.getByName(arr[4]));
-            header.setNumberOfIp(Integer.parseInt(arr[5]));
+            header.setNumberOfIp(Integer.parseInt(arr[6]));
 
             header.setDefaultGateway((Inet4Address) Inet4Address.getByName(defaultGatewayIp));
             header.setDns((Inet4Address) Inet4Address.getByName(dnsIp));
@@ -106,6 +106,11 @@ public class FileService implements FileServiceRepository {
             throw new RuntimeException(e);
         }
         //return null;
+    }
+
+    @Override
+    public boolean addMacAndIp(String poolId, String mac, Inet4Address ip) {
+        return false;
     }
 
 }
