@@ -6,7 +6,7 @@ import fileServices.dto.Headers;
 
 import java.io.*;
 import java.net.Inet4Address;
-import java.net.InetAddress;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class FileService implements FileServiceRepository {
     }
 
     @Override
-    public boolean writeContent(
+    public synchronized boolean writeContent(
             String fileId,
             String poolId,
             String poolName,
@@ -49,7 +49,7 @@ public class FileService implements FileServiceRepository {
             String defaultGatewayIp = "default-gateway" + defaultGateway.toString();
             String dnsIp = "dns" + dns.toString();
 
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileId)));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileId, String.valueOf(true))));
             bw.write(firstLine);
             bw.newLine();
             bw.write(defaultGatewayIp);
@@ -109,9 +109,18 @@ public class FileService implements FileServiceRepository {
     }
 
     @Override
-    public boolean addMacAndIp(String poolId, String mac, Inet4Address ip) {
+    public synchronized boolean addMacAndIp(String poolId, String mac, Inet4Address ip, Time leaseTime) {
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(new File(poolId)));
+
+        }catch (Exception e){
+            System.out.println("Error in adding Mac and Ip" + e.getMessage());
+            throw new RuntimeException(e);
+        }
         return false;
     }
+
 
 }
 /*

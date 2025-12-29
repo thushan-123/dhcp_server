@@ -5,6 +5,7 @@ import fileServices.dto.FileData;
 import fileServices.dto.Headers;
 
 import java.net.Inet4Address;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public interface FileServiceRepository {
 
     public Headers getHeaders(String poolId);
 
-    public boolean addMacAndIp(String poolId, String mac, Inet4Address ip);
+    public boolean addMacAndIp(String poolId, String mac, Inet4Address ip, Time leaseTime);
 
 }
 
