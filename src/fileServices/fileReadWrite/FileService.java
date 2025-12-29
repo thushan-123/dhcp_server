@@ -7,6 +7,7 @@ import fileServices.dto.Headers;
 import java.io.*;
 import java.net.Inet4Address;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -109,17 +110,54 @@ public class FileService implements FileServiceRepository {
     }
 
     @Override
-    public synchronized boolean addMacAndIp(String poolId, String mac, Inet4Address ip, Time leaseTime) {
+    public synchronized boolean addMacAndIp(
+            String fileId,
+            String mac,
+            Inet4Address ip,
+            Time leaseTime) {
+
+        File file = new File(fileId);
+        String record = mac + "\t" + ip.getHostAddress() + "\t" + leaseTime + System.lineSeparator();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(new File(poolId)));
+            List<String> lines = new ArrayList<>();
 
-        }catch (Exception e){
-            System.out.println("Error in adding Mac and Ip" + e.getMessage());
-            throw new RuntimeException(e);
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    lines.add(line);
+                }
+            }
+
+            // find first empty line after line 4
+            boolean written = false;
+            for (int i = 4; i < lines.size(); i++) {
+                if (lines.get(i).trim().isEmpty()) {
+                    lines.set(i, record.trim());
+                    written = true;
+                    break;
+                }
+            }
+
+            if (!written) {
+                lines.add(record.trim());
+            }
+
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+                for (String l : lines) {
+                    bw.write(l);
+                    bw.newLine();
+                }
+            }
+
+            return true;
+
+        } catch (IOException e) {
+            System.err.println("Error adding MAC and IP: " + e.getMessage());
+            return false;
         }
-        return false;
     }
+
 
 
 }
@@ -130,7 +168,7 @@ public class FileService implements FileServiceRepository {
 
 # ip sub_pool <sub-pool-id> <size>    // line number 5  size 10  (next-sub-pool-line 17 (start-line + (sub-pool-id * size) +2) 5 + (10 * 1) + 2 = 17
 
-ff:56:55:55:34:aa:12  192.168.1.100  5  ACTIVE  // <mac-address> <ip> <lease-time> <assign or available>
+ff:56:55:55:34:aa:12  192.168.1.100  5  ACTIVE // <mac-address> <ip> <lease-time> <assign or available>
 ff:56:55:55:34:aa:12  192.168.1.101  5  ACTIVE
 ff:56:55:55:34:aa:12  192.168.1.102  5  ACTIVE
 ff:56:55:55:34:aa:12  192.168.1.103  5  ACTIVE
