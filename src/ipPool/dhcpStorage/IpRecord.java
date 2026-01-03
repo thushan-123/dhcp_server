@@ -4,12 +4,12 @@ import java.net.Inet4Address;
 import java.net.NetworkInterface;
 import java.time.LocalDateTime;
 
-public class IpStorage {
+public class IpRecord {
     NetworkInterface networkInterface;
     Inet4Address inet4AddressAssign;
     LocalDateTime leaseTime;
 
-    public IpStorage() {}
+    public IpRecord() {}
 
     public Inet4Address getInet4AddressAssign() {
         return inet4AddressAssign;

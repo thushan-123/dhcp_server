@@ -5,9 +5,9 @@ import java.net.NetworkInterface;
 
 public interface FileStorageService {
 
-    public boolean storeMacAndIpv4 (IpStorage ipStorage);
+    public boolean storeMacAndIpv4 (IpRecord ipStorage);
 
-    public IpStorage findByMac(NetworkInterface networkInterface);
+    public IpRecord findByMac(NetworkInterface networkInterface);
 
-    public IpStorage findByIpv4(Inet4Address inet4Address);
+    public IpRecord findByIpv4(Inet4Address inet4Address);
 }
