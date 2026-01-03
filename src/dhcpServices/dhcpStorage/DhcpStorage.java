@@ -4,13 +4,11 @@ import utility.IpPool;
 import utility.IpRecord;
 
 import java.net.Inet4Address;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-public class DhcpStorage implements  DhcpStorageServices{
+public class DhcpStorage<T> implements  DhcpStorageServices {
 
-    private HashMap<IpPool, List<IpRecord>> ipPools = new HashMap<IpPool, List<IpRecord>>();
+    private HashMap<UUID, List<T>> ipPools = new HashMap<>();
 
     @Override
     public IpRecord generateIpRecord(IpRecord ipRecord) {
@@ -23,13 +21,12 @@ public class DhcpStorage implements  DhcpStorageServices{
     }
 
     @Override
-    public IpPool getIpPool() {
-        return null;
+    public IpPool getIpPool(UUID poolId) {
+       return null;
     }
 
     @Override
     public void setIpPool(IpPool ipPool) {
 
-        ipPools.put(ipPool, new ArrayList<>());
     }
 }
