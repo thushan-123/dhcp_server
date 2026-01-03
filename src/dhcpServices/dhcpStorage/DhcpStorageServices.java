@@ -7,6 +7,7 @@ import java.net.Inet4Address;
 
 public interface DhcpStorageServices {
 
+
     public IpRecord generateIpRecord(IpRecord ipRecord);
 
     public IpRecord deleteIpRecord(Inet4Address inet4Address);
