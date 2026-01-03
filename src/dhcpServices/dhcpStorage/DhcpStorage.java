@@ -6,9 +6,19 @@ import utility.IpRecord;
 import java.net.Inet4Address;
 import java.util.*;
 
-public class DhcpStorage<T> implements  DhcpStorageServices {
+public class DhcpStorage implements  DhcpStorageServices {
 
-    private HashMap<UUID, List<T>> ipPools = new HashMap<>();
+    private HashMap<UUID, List<Object>> ipPools = new HashMap<>();
+
+    @Override
+    public void setIpPool(IpPool ipPool) {
+
+        List<IpRecord> ipRecords = new ArrayList<>();
+        List<Object> newPool = new ArrayList<>();
+        newPool.add(ipPool);
+        newPool.add(ipRecords);
+        ipPools.put(ipPool.getPoolId(), newPool);
+    }
 
     @Override
     public IpRecord generateIpRecord(IpRecord ipRecord) {
@@ -25,8 +35,5 @@ public class DhcpStorage<T> implements  DhcpStorageServices {
        return null;
     }
 
-    @Override
-    public void setIpPool(IpPool ipPool) {
 
-    }
 }
