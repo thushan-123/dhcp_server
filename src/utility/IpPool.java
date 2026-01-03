@@ -1,4 +1,4 @@
-package ipPool;
+package utility;
 
 import java.net.Inet4Address;
 

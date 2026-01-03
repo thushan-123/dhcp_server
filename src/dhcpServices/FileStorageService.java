@@ -1,4 +1,6 @@
-package ipPool.dhcpStorage;
+package dhcpServices;
+
+import utility.IpRecord;
 
 import java.net.Inet4Address;
 import java.net.NetworkInterface;
