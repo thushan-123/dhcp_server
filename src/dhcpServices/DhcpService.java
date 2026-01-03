@@ -5,7 +5,7 @@ import utility.IpRecord;
 
 import java.util.List;
 
-public class DhcpStorage {
+public class DhcpService {
 
     /*
     IpRecord attributes
@@ -26,13 +26,17 @@ public class DhcpStorage {
     private List<IpRecord> ipRecords;
     private final IpPool ipPool;
 
-    public DhcpStorage(IpPool ipPool) {
+    public DhcpService(IpPool ipPool) {
         this.ipPool = ipPool;
     }
 
-    public IpRecord getIpRecord() {
+    public IpRecord getIp() {
 
         // generate the ip between start ip and end ip
         return null;
+    }
+
+    public boolean deleteIp(IpRecord ipRecord) {
+        return false;
     }
 }
