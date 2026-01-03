@@ -32,7 +32,12 @@ public class DhcpStorage implements  DhcpStorageServices {
 
     @Override
     public IpPool getIpPool(UUID poolId) {
-       return null;
+        List<Object> data = ipPools.get(poolId);
+        if (data == null) {
+            return null;
+        }
+
+        return (IpPool) data.getFirst();
     }
 
 
