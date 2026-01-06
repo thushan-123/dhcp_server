@@ -32,9 +32,9 @@ public class IpPool {
         return poolId;
     }
 
-    public void setPoolId(UUID poolId) {
-        this.poolId = poolId;
-    }
+//    public void setPoolId(UUID poolId) {
+//        this.poolId = poolId;
+//    }
 
     public Inet4Address getIpv4PoolStartIp() {
         return ipv4PoolStartIp;

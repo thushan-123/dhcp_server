@@ -13,17 +13,23 @@ public class DhcpStorage implements  DhcpStorageServices {
 
     private ArrayList<IpRecord> ipRecords = new ArrayList<>();
 
-    @Override
-    public void setIpPool(IpPool ipPool) {
+    public DhcpStorage(IpPool ipPool) {
         this.ipPool = ipPool;
-
     }
+
+//    @Override
+//    public void setIpPool(IpPool ipPool) {
+//        this.ipPool = ipPool;
+//
+//    }
 
     @Override
     public IpRecord generateIpRecord(UUID poolId ,NetworkInterface networkInterface) {
 
         return null;
     }
+
+
 
     @Override
     public IpRecord deleteIpRecord(Inet4Address inet4Address) {

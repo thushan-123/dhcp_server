@@ -16,6 +16,6 @@ public interface DhcpStorageServices {
 
     public IpPool getIpPool(UUID poolId);
 
-    public void setIpPool(IpPool ipPool);
+    //public void setIpPool(IpPool ipPool);
 
 }
