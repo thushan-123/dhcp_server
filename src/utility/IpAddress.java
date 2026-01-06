@@ -1,6 +1,7 @@
 package utility;
 
 import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class IpAddress {
             Inet4Address ipAddress,
             Inet4Address subnetMask,
             List<Inet4Address> excludeIps
-    ) {
+    ) throws UnknownHostException {
         if (subnetMask == null || ipAddress == null || excludeIps == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
@@ -27,6 +28,7 @@ public class IpAddress {
             throw new IllegalArgumentException("Invalid IP address");
         }
 
-        return null;
+        octes[3] = String.valueOf((Integer.parseInt(octes[3]) + 1));
+        return (Inet4Address) Inet4Address.getByName(octes[1] +"." +octes[1]+ "."+octes[2]+ "."+ octes[3]);
     }
 }
