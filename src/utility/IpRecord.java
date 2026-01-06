@@ -11,6 +11,12 @@ public class IpRecord {
 
     public IpRecord() {}
 
+    public IpRecord(NetworkInterface networkInterface, Inet4Address inet4AddressAssign, LocalDateTime leaseTime) {
+        this.networkInterface = networkInterface;
+        this.inet4AddressAssign = inet4AddressAssign;
+        this.leaseTime = leaseTime;
+    }
+
     public Inet4Address getInet4AddressAssign() {
         return inet4AddressAssign;
     }
