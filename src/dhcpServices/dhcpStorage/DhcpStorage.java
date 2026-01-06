@@ -4,6 +4,7 @@ import utility.IpPool;
 import utility.IpRecord;
 
 import java.net.Inet4Address;
+import java.net.NetworkInterface;
 import java.util.*;
 
 public class DhcpStorage implements  DhcpStorageServices {
@@ -21,7 +22,7 @@ public class DhcpStorage implements  DhcpStorageServices {
     }
 
     @Override
-    public IpRecord generateIpRecord(IpRecord ipRecord) {
+    public IpRecord generateIpRecord(NetworkInterface networkInterface) {
         return null;
     }
 

@@ -4,12 +4,13 @@ import utility.IpPool;
 import utility.IpRecord;
 
 import java.net.Inet4Address;
+import java.net.NetworkInterface;
 import java.util.UUID;
 
 public interface DhcpStorageServices {
 
 
-    public IpRecord generateIpRecord(IpRecord ipRecord);
+    public IpRecord generateIpRecord(NetworkInterface networkInterface);
 
     public IpRecord deleteIpRecord(Inet4Address inet4Address);
 
