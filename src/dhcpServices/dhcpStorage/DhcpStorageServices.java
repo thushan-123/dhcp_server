@@ -5,12 +5,13 @@ import utility.IpRecord;
 
 import java.net.Inet4Address;
 import java.net.NetworkInterface;
+import java.net.UnknownHostException;
 import java.util.UUID;
 
 public interface DhcpStorageServices {
 
 
-    public IpRecord generateIpRecord( UUID poolId ,NetworkInterface networkInterface);
+    public IpRecord generateIpRecord( UUID poolId ,NetworkInterface networkInterface) throws UnknownHostException;
 
     public IpRecord deleteIpRecord(Inet4Address inet4Address);
 

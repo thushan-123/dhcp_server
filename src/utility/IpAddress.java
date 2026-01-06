@@ -8,14 +8,14 @@ import java.util.List;
 public class IpAddress {
 
     public static Inet4Address incrementIp(
-            Inet4Address ipAddress,
+            Inet4Address startIp,
             Inet4Address subnetMask,
             List<Inet4Address> excludeIps
     ) throws UnknownHostException {
-        if (subnetMask == null || ipAddress == null || excludeIps == null) {
+        if (subnetMask == null || startIp == null || excludeIps == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
-        String ip = ipAddress.toString();
+        String ip = startIp.toString();
         String mask = subnetMask.toString();
 
         List<String> excludeIpString = new ArrayList<>();
