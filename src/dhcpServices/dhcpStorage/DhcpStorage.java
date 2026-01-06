@@ -9,19 +9,19 @@ import java.util.*;
 
 public class DhcpStorage implements  DhcpStorageServices {
 
-    private IpPool ipPool;
+    private List<IpPool> ipPool;
 
-    private ArrayList<IpRecord> ipRecords = new ArrayList<>();
+    private HashMap<UUID, IpRecord> ipRecords = new HashMap<>();
 
-    public DhcpStorage(IpPool ipPool) {
-        this.ipPool = ipPool;
-    }
-
-//    @Override
-//    public void setIpPool(IpPool ipPool) {
+//    public DhcpStorage(IpPool ipPool) {
 //        this.ipPool = ipPool;
-//
 //    }
+
+    @Override
+    public void setIpPool(IpPool ipPool) {
+        this.ipPool.add(ipPool);
+
+    }
 
     @Override
     public IpRecord generateIpRecord(UUID poolId ,NetworkInterface networkInterface) {
