@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface DhcpStorageServices {
 
 
-    public IpRecord generateIpRecord(NetworkInterface networkInterface);
+    public IpRecord generateIpRecord( UUID poolId ,NetworkInterface networkInterface);
 
     public IpRecord deleteIpRecord(Inet4Address inet4Address);
 

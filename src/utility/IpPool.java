@@ -19,6 +19,7 @@ public class IpPool {
             Inet4Address ipv4PoolEndIp,
             Inet4Address[] excludeIps
     ){
+        this.poolId = UUID.randomUUID();
         this.networkIp = networkIp;
         this.subnetMask = subnetMask;
         this.ipv4PoolStartIp = ipv4PoolStartIp;
