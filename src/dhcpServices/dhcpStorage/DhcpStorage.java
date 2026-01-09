@@ -44,7 +44,7 @@ public class DhcpStorage implements  DhcpStorageServices {
         for (IpRecord ipRecord : records) {
             excludeIps.add(ipRecord.getInet4AddressAssign());
         }
-        records.addAll(ipPool.getExcludeIps());
+        excludeIps.addAll(ipPool.getExcludeIps());
 
         Inet4Address newIp = IpAddress.incrementIp(
                 ipPool.getIpv4PoolStartIp(),

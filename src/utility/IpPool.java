@@ -1,6 +1,7 @@
 package utility;
 
 import java.net.Inet4Address;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -53,8 +54,8 @@ public class IpPool {
         this.ipv4PoolEndIp = ipv4PoolEndIp;
     }
 
-    public Collection<? extends IpRecord> getExcludeIps() {
-        return excludeIps;
+    public void setPoolId(UUID poolId) {
+        this.poolId = poolId;
     }
 
     public void setExcludeIps(Inet4Address[] excludeIps) {
@@ -75,5 +76,9 @@ public class IpPool {
 
     public void setSubnetMask(Inet4Address subnetMask) {
         this.subnetMask = subnetMask;
+    }
+
+    public Collection<Inet4Address> getExcludeIps() {
+        return Arrays.asList(excludeIps);
     }
 }
