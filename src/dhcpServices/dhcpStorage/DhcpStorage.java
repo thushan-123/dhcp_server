@@ -62,12 +62,11 @@ public class DhcpStorage implements  DhcpStorageServices {
         //return null;
     }
 
-
-
     @Override
-    public IpRecord deleteIpRecord(Inet4Address inet4Address) {
+    public IpRecord deleteIpRecord(UUID poolId, Inet4Address inet4Address) {
         return null;
     }
+
 
     @Override
     public IpPool getIpPool(UUID poolId) {
