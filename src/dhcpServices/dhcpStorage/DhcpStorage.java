@@ -28,28 +28,38 @@ public class DhcpStorage implements  DhcpStorageServices {
     public IpRecord generateIpRecord(UUID poolId ,NetworkInterface networkInterface) throws UnknownHostException {
         // check poolIp exists
 
-//        LocalDateTime currentDateTime = LocalDateTime.now();
-//        LocalDateTime tomorrowDateTime = currentDateTime.plusDays(1);
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime tomorrowDateTime = currentDateTime.plusDays(1);
 
         IpPool ipPool = ipPools.get(poolId);
         if (ipPool == null) {
             throw new IllegalArgumentException("Pool " + poolId + " not found");
         }
+
+        // get current using ips
+        List<IpRecord> records = ipRecords.get(poolId);
+
+        // add ips in inet4 array
+        List<Inet4Address> excludeIps = new ArrayList<>();
+        for (IpRecord ipRecord : records) {
+            excludeIps.add(ipRecord.getInet4AddressAssign());
+        }
+        records.addAll(ipPool.getExcludeIps());
+
         Inet4Address newIp = IpAddress.incrementIp(
                 ipPool.getIpv4PoolStartIp(),
                 ipPool.getSubnetMask(),
-                List.of(ipPool.getExcludeIps())
+                excludeIps
         );
 
-        List<IpRecord> records = ipRecords.get(poolId);
+        // new ip add to list and update hashmap
+        IpRecord newIpRecord = new IpRecord(networkInterface, newIp, tomorrowDateTime);
+        records.add(newIpRecord);
 
-//        return new IpRecord(
-//                networkInterface,
-//                newIp,
-//                ipPool
-//
-//        );
-        return null;
+        ipRecords.put(poolId, records);
+
+        return newIpRecord;
+        //return null;
     }
 
 

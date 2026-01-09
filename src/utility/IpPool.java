@@ -1,6 +1,7 @@
 package utility;
 
 import java.net.Inet4Address;
+import java.util.Collection;
 import java.util.UUID;
 
 public class IpPool {
@@ -52,7 +53,7 @@ public class IpPool {
         this.ipv4PoolEndIp = ipv4PoolEndIp;
     }
 
-    public Inet4Address[] getExcludeIps() {
+    public Collection<? extends IpRecord> getExcludeIps() {
         return excludeIps;
     }
 
