@@ -63,8 +63,13 @@ public class DhcpStorage implements  DhcpStorageServices {
     }
 
     @Override
-    public IpRecord deleteIpRecord(UUID poolId, Inet4Address inet4Address) {
-        return null;
+    public boolean deleteIpRecord(UUID poolId, Inet4Address inet4Address) {
+        // get the list of ipRecord in ipRecodes hashmap
+        List<IpRecord> records = ipRecords.get(poolId);
+        records.removeIf(ipRecord -> ipRecord.getInet4AddressAssign().equals(inet4Address));
+        // save new record
+        ipRecords.put(poolId, records);
+        return true;
     }
 
 
