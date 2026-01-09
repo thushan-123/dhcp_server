@@ -16,9 +16,7 @@ public class DhcpStorage implements  DhcpStorageServices {
 
     private HashMap<UUID, List<IpRecord>> ipRecords = new HashMap<>();
 
-//    public DhcpStorage(IpPool ipPool) {
-//        this.ipPool = ipPool;
-//    }
+
 
     @Override
     public void setIpPool(IpPool ipPool) {
@@ -63,7 +61,7 @@ public class DhcpStorage implements  DhcpStorageServices {
 
     @Override
     public IpPool getIpPool(UUID poolId) {
-        List<Object> data = ipPools.get(poolId);
+        List<Object> data = Collections.singletonList(ipPools.get(poolId));
         if (data == null) {
             return null;
         }

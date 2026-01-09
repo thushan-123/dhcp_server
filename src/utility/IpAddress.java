@@ -1,9 +1,11 @@
 package utility;
 
 import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class IpAddress {
 
@@ -12,23 +14,55 @@ public class IpAddress {
             Inet4Address subnetMask,
             List<Inet4Address> excludeIps
     ) throws UnknownHostException {
-        if (subnetMask == null || startIp == null || excludeIps == null) {
+
+        if (startIp == null || subnetMask == null || excludeIps == null) {
             throw new IllegalArgumentException("Invalid arguments");
         }
-        String ip = startIp.toString();
-        String mask = subnetMask.toString();
 
-        List<String> excludeIpString = new ArrayList<>();
-        for (Inet4Address a : excludeIps) {
-            excludeIpString.add(a.toString());
+        int startIpInt = inetToInt(startIp);
+        int maskInt = inetToInt(subnetMask);
+
+        int network = startIpInt & maskInt;
+        int broadcast = network | ~maskInt;
+
+        //excluded IP
+        Set<Integer> excluded = new HashSet<>();
+        for (Inet4Address ip : excludeIps) {
+            excluded.add(inetToInt(ip));
         }
 
-        String[] octes = ip.split("\\.");   // split ip 4 octes
-        if (octes.length != 4) {
-            throw new IllegalArgumentException("Invalid IP address");
+        // start from next IP
+        for (int candidate = startIpInt + 1; candidate < broadcast; candidate++) {
+
+            // Skip network & broadcast
+            if (candidate == network || candidate == broadcast) {
+                continue;
+            }
+
+            if (!excluded.contains(candidate)) {
+                return intToInet(candidate);
+            }
         }
 
-        octes[3] = String.valueOf((Integer.parseInt(octes[3]) + 1));
-        return (Inet4Address) Inet4Address.getByName(octes[1] +"." +octes[1]+ "."+octes[2]+ "."+ octes[3]);
+        throw new IllegalStateException("No available IP in subnet");
+    }
+
+
+    private static int inetToInt(Inet4Address ip) {
+        byte[] bytes = ip.getAddress();
+        return ((bytes[0] & 0xFF) << 24)
+                | ((bytes[1] & 0xFF) << 16)
+                | ((bytes[2] & 0xFF) << 8)
+                | (bytes[3] & 0xFF);
+    }
+
+    private static Inet4Address intToInet(int value) throws UnknownHostException {
+        byte[] bytes = new byte[] {
+                (byte) (value >>> 24),
+                (byte) (value >>> 16),
+                (byte) (value >>> 8),
+                (byte) value
+        };
+        return (Inet4Address) InetAddress.getByAddress(bytes);
     }
 }
