@@ -70,12 +70,9 @@ public class DhcpStorage implements  DhcpStorageServices {
 
     @Override
     public IpPool getIpPool(UUID poolId) {
-        List<Object> data = Collections.singletonList(ipPools.get(poolId));
-        if (data == null) {
-            return null;
-        }
 
-        return (IpPool) data.getFirst();
+        // find the ip pool use in poolId and return
+        return ipPools.get(poolId);
     }
 
 
