@@ -36,8 +36,11 @@ public class Main {
                 System.out.println(Arrays.toString(grabDhcpDiscover.getClientMac()));
 
                 MacUtility macUtility = new MacUtility(); // crate mac utility
+
+                byte[] newIp = new byte[]{(byte)192, (byte)168, 1, 10};
+
                 // create a dhcp offer msg send out port 68
-                OfferMessage offerMessage = new OfferMessage(grabDhcpDiscover.getXid(), macUtility.macToBytes("00:A0:BF:FF:FF:FF"), );
+                OfferMessage offerMessage = new OfferMessage(grabDhcpDiscover.getXid(), macUtility.macToBytes("00:A0:BF:FF:FF:FF"), newIp);
 //                DatagramPacket resPacket = getDatagramPacket(datagramPacket);
 //
 //                serverSocket.send(resPacket);
