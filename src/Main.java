@@ -2,6 +2,7 @@ import dhcpMessage.OfferMessage;
 import enums.IpStatus;
 import logger.LogStatus;
 import logger.Logger;
+import utility.MacUtility;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -31,10 +32,12 @@ public class Main {
                 Logger.getInstance().log(LogStatus.INFO, "DHCP DISCOVER message receive");
                 GrabDhcpDiscover grabDhcpDiscover = new GrabDhcpDiscover(data);
 
+
                 System.out.println(Arrays.toString(grabDhcpDiscover.getClientMac()));
 
+                MacUtility macUtility = new MacUtility(); // crate mac utility
                 // create a dhcp offer msg send out port 68
-//                OfferMessage offerMessage = new OfferMessage(grabDhcpDiscover.getXid(), "00:A0:BF:FF:FF:FF", );
+                OfferMessage offerMessage = new OfferMessage(grabDhcpDiscover.getXid(), macUtility.macToBytes("00:A0:BF:FF:FF:FF"), );
 //                DatagramPacket resPacket = getDatagramPacket(datagramPacket);
 //
 //                serverSocket.send(resPacket);
