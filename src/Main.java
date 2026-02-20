@@ -33,8 +33,8 @@ public class Main {
 
                 System.out.println(Arrays.toString(grabDhcpDiscover.getClientMac()));
 
-
-
+                // create a dhcp offer msg send out port 68
+//                OfferMessage offerMessage = new OfferMessage(grabDhcpDiscover.getXid(), "00:A0:BF:FF:FF:FF", );
 //                DatagramPacket resPacket = getDatagramPacket(datagramPacket);
 //
 //                serverSocket.send(resPacket);
