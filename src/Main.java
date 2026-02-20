@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +30,8 @@ public class Main {
 
                 Logger.getInstance().log(LogStatus.INFO, "DHCP DISCOVER message receive");
                 GrabDhcpDiscover grabDhcpDiscover = new GrabDhcpDiscover(data);
+
+                System.out.println(Arrays.toString(grabDhcpDiscover.getClientMac()));
 
 
 

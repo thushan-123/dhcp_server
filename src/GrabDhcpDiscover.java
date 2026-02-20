@@ -10,7 +10,7 @@ public class GrabDhcpDiscover {
         xid = new byte[4];
         clientMac = new byte[6];
         System.arraycopy(dhcpDiscoverMessage, 4, xid, 0, 4);
-        System.arraycopy(dhcpDiscoverMessage, 0, clientMac, 0, 6);
+        System.arraycopy(dhcpDiscoverMessage, 28, clientMac, 0, 6);
     }
 
     public byte[] getClientMac() {
