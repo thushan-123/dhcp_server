@@ -32,8 +32,9 @@ public class DhcpService {
     }
 
     public IpRecord getIp() {
-        Inet4Address startIp = ipPool.getIpv4PoolStartIp();
-        Inet4Address endIp = ipPool.getIpv4PoolEndIp();
+        String startIp = ipPool.getIpv4PoolStartIp().toString();
+        String endIp = ipPool.getIpv4PoolEndIp().toString();
+        String subnetMask = ipPool.getSubnetMask().toString();
 
         // generate the ip between start ip and end ip
         return null;
