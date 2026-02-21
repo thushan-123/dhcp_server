@@ -3,6 +3,7 @@ package dhcpServices;
 import utility.IpPool;
 import utility.IpRecord;
 
+import java.net.Inet4Address;
 import java.util.List;
 
 public class DhcpService {
@@ -31,6 +32,8 @@ public class DhcpService {
     }
 
     public IpRecord getIp() {
+        Inet4Address startIp = ipPool.getIpv4PoolStartIp();
+        Inet4Address endIp = ipPool.getIpv4PoolEndIp();
 
         // generate the ip between start ip and end ip
         return null;
